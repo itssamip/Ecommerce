@@ -10,6 +10,8 @@ namespace Ecommerce.DataAccess.Repo.IRepo
     {
         IMenuRepository Menu { get; }
 
+        ICategoryRepository Category { get; }
+
         void Save();
     }
 }

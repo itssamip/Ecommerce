@@ -7,16 +7,18 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Models
 {
-    public class Menu
+    public class Category
     {
         [Key]
         public int Id { get; set; }
 
+        [Display(Name ="Category Name")]
         [MaxLength(50)]
-        [Display(Name ="Menu Names")]
-        [Required]
         public string Name { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        [Required]
+        [Display(Name ="Menu Type")]
+        public int  MenuId { get; set; }
+        public Menu Menu { get; set; }
     }
 }

@@ -1,0 +1,60 @@
+﻿@model Ecommerce.Models.ViewModels.CategoryVM
+
+@{
+    var title = "Create Category List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form method="post">
+    <div class="row p-3 border">
+        <
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Category.Id !=0)
+        {
+            //edit
+            title = "Edit Cattegory Type";
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <input  type="hidden" asp-for="Category.Id"/>
+        <div class="col-8 pt-4">
+            <div class="form-group row pt-2">
+                <div class="col-4">
+                    <label asp-for="Category.MenuId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m=> m.Category.MenuId, Model.MenuList, "- Select a Menu Type -", new {@class = "form-control" } )
+                    <span asp-validation-for="Category.MenuId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-4">
+                    <label asp-for="Category.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Category.Name" class="form-control" />
+                    <span asp-validation-for="Category.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-8 offset-4">
+                    @if (Model.Category.Id != 0)
+                    {
+                        <partial name="_EditAndBackToListButton" model="Model.Category.Id" />
+                    }
+                    else
+                    {
+                        <partial name="_CreateAndBackToListButton" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

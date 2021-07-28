@@ -16,10 +16,12 @@ namespace Ecommerce.DataAccess.Repo
         {
             _db = db;
             Menu = new MenuRepository(_db);
+            Category = new CategoryRepository(_db);
             
         }
 
         public IMenuRepository Menu { get; private set; }
+        public ICategoryRepository Category { get; private set; }
 
         public void Dispose()
         {
