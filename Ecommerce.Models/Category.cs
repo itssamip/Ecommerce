@@ -20,5 +20,7 @@ namespace Ecommerce.Models
         [Display(Name ="Menu Type")]
         public int  MenuId { get; set; }
         public Menu Menu { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }
